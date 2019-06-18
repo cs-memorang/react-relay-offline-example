@@ -36,7 +36,7 @@ return {
     "connection": [
       {
         "count": null,
-        "cursor": null,
+        "cursor": "cursor",
         "direction": "forward",
         "path": [
           "todos"
@@ -44,7 +44,20 @@ return {
       }
     ]
   },
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "count",
+      "type": "Int",
+      "defaultValue": 3
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "cursor",
+      "type": "String",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     (v0/*: any*/),
     {
@@ -151,5 +164,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3225adf0f3b5d0a46ee4c63c8dbd9b08';
+(node as any).hash = 'cbd49ffe64687739a2598a6c9e24f3a4';
 export default node;

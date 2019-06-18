@@ -40,7 +40,7 @@ return {
     "connection": [
       {
         "count": null,
-        "cursor": null,
+        "cursor": "cursor",
         "direction": "forward",
         "path": [
           "todos"
@@ -48,7 +48,20 @@ return {
       }
     ]
   },
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "count",
+      "type": "Int",
+      "defaultValue": 3
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "cursor",
+      "type": "String",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
@@ -165,5 +178,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4c169798c328a2b4d9b4ae5227d016bb';
+(node as any).hash = '95ead5b86d09249aafdad8de5f34e574';
 export default node;

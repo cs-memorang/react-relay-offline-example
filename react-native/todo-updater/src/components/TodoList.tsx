@@ -63,7 +63,6 @@ const TodoList = ({
    title={"Load more"}
    onPress={() => {
      if(relay.hasMore()){
-       console.log('...' , user.userId)
        relay.loadMore()
      }
    }} ></Button>    
@@ -123,7 +122,6 @@ export default createPaginationContainer(TodoList, {
 }, {
   direction: 'forward',
   getConnectionFromProps(props) {
-    console.log('..props', props)
     return props.user && props.user.todos;
   },
   // This is also the default implementation of `getFragmentVariables` if it isn't provided.
@@ -134,7 +132,6 @@ export default createPaginationContainer(TodoList, {
     };
   },
   getVariables(props, {count, cursor}, fragmentVariables) {
-    console.log('...' , fragmentVariables)
     return {
       cursor,
       userId : fragmentVariables.userId
