@@ -2,7 +2,8 @@ import { Store, Environment } from 'react-relay-offline';
 
 import { Network, FetchFunction } from 'relay-runtime';
 export { QueryRenderer, graphql } from 'react-relay-offline';
-import RelayNetworkLogger from 'relay-runtime/lib/RelayNetworkLogger'
+const RelayNetworkLogger = require('relay-runtime/lib/RelayNetworkLogger')
+//import RelayNetworkLogger from 'relay-runtime/lib/RelayNetworkLogger'
 
 /**
  * Define fetch query

@@ -19,12 +19,12 @@ import TodoTextInput from './TodoTextInput';
 import React, { useState } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay-offline';
 import { View } from 'react-native';
-import styled, {css} from "styled-components";
+import styled, {css} from "styled-components/native";
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation';
 import { CheckBox, Button, Text } from 'react-native-elements';
 
-const StyledLabel = styled(Text)`
+const StyledLabel:any = styled(Text)`
   text-align: center;
   flex: 1;  
 `;
@@ -45,6 +45,7 @@ const StyledCheckBox = styled(CheckBox)`
   margin: auto 0;
 `;*/
 
+
 const Todo = ({ relay, todo, user }: any) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   console.log("text", todo)
@@ -60,7 +61,7 @@ const Todo = ({ relay, todo, user }: any) => {
   return <View style={{flex: 1, flexDirection: 'row',
   justifyContent: 'center', alignItems: 'center'}}>
     <CheckBox
-    containerStyle={css`border: 1px solid #e6e6e6;`}
+    // containerStyle={css`border: 1px solid #e6e6e6;`}
     checkedIcon='dot-circle-o'
     uncheckedIcon='circle-o'
           checked={todo.complete}

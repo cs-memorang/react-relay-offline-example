@@ -4,7 +4,7 @@ import { graphql } from 'react-relay-offline';
 import { environment, QueryRenderer } from './relay';
 import { default as Loading } from './components/Loading';
 import TodoApp from './components/TodoApp';
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 /**
  * Query Definitions

@@ -18,7 +18,7 @@ import React, {useState} from 'react';
 import {createPaginationContainer, graphql} from 'react-relay-offline';
 import { Text, ScrollView, RefreshControl, FlatList, Button } from "react-native";
 
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 const StyledMain = styled.View`
   position: relative;
