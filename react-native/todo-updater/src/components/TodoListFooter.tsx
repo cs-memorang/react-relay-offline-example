@@ -82,12 +82,18 @@ const TodoListFooter = ({
 
 export default createFragmentContainer(TodoListFooter, {
   user: graphql`
-    fragment TodoListFooter_user on User {
+    fragment TodoListFooter_user on User 
+    
+    @argumentDefinitions(
+        count: {type: "Int", defaultValue: 3}
+        cursor: {type: String}
+      ) {
       id
       userId
       completedCount
       todos(
-        first: 2147483647 # max GraphQLInt
+        first: 2 ,
+        after :$cursor# max GraphQLInt
       ) @connection(key: "TodoList_todos") {
         edges {
           node {

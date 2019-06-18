@@ -15,8 +15,8 @@
 import Todo from './Todo';
 
 import React, {useState} from 'react';
-import {createFragmentContainer, graphql} from 'react-relay-offline';
-import { Text, ScrollView, RefreshControl, FlatList } from "react-native";
+import {createPaginationContainer, graphql} from 'react-relay-offline';
+import { Text, ScrollView, RefreshControl, FlatList, Button } from "react-native";
 
 import styled from "styled-components";
 
@@ -43,6 +43,7 @@ const TodoList = ({
   const onRefresh = async () => {
     //setRefreshing(true);
     //refetch({}, {}, () => setRefreshing(false))
+    
   }
 
   const nodes =
@@ -58,6 +59,14 @@ const TodoList = ({
   {nodes.map((node: any) => (
           <Todo key={node.id} todo={node} user={user} />
         ))}
+   <Button 
+   title={"Load more"}
+   onPress={() => {
+     if(relay.hasMore()){
+       console.log('...' , user.userId)
+       relay.loadMore()
+     }
+   }} ></Button>    
 </ScrollView>
 </StyledMain>
   
@@ -83,11 +92,18 @@ const TodoList = ({
   );*/
 };
 
-export default createFragmentContainer(TodoList, {
+export default createPaginationContainer(TodoList, {
   user: graphql`
-    fragment TodoList_user on User {
+    fragment TodoList_user on User
+    @argumentDefinitions(
+        count: {type: "Int", defaultValue: 3}
+        cursor: {type: String},
+      ) {
+     
       todos(
-        first: 2147483647 # max GraphQLInt
+        first: 2 , 
+        after: $cursor
+        # max GraphQLInt
       ) @connection(key: "TodoList_todos") {
         edges {
           node {
@@ -104,4 +120,33 @@ export default createFragmentContainer(TodoList, {
       ...Todo_user
     }
   `,
+}, {
+  direction: 'forward',
+  getConnectionFromProps(props) {
+    console.log('..props', props)
+    return props.user && props.user.todos;
+  },
+  // This is also the default implementation of `getFragmentVariables` if it isn't provided.
+  getFragmentVariables(prevVars, totalCount) {
+    return {
+      ...prevVars,
+      count: totalCount,
+    };
+  },
+  getVariables(props, {count, cursor}, fragmentVariables) {
+    console.log('...' , fragmentVariables)
+    return {
+      cursor,
+      userId : fragmentVariables.userId
+    };
+  },
+  query: graphql`
+    # Pagination query to be fetched upon calling 'loadMore'.
+    # Notice that we re-use our fragment, and the shape of this query matches our fragment spec.
+    query TodoListQuery($userId: String ,   $cursor: String) {
+          user(id: $userId ) {
+            ...TodoList_user @arguments( cursor: $cursor)
+          }
+        }
+  `
 });
