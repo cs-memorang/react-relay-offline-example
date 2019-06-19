@@ -18,7 +18,7 @@ import React, {useState} from 'react';
 import {createPaginationContainer, graphql} from 'react-relay-offline';
 import { Text, ScrollView, RefreshControl, FlatList, Button, StyleSheet } from "react-native";
 
-import styled from "styled-components/native";
+// import styled from "styled-components/native";
 
 // const StyledMain = styled.View`
 //   position: relative;
@@ -66,7 +66,7 @@ const TodoList = ({
        relay.loadMore()
      }
    }} ></Button>    
-</ScrollView>)
+</ScrollView>);
  /* (
    
         <Text key={item.node.id}>{item.node.hallName}</Text>

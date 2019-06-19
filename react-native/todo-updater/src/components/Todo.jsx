@@ -19,15 +19,15 @@ import TodoTextInput from './TodoTextInput';
 import React, { useState } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay-offline';
 import { View, StyleSheet } from 'react-native';
-import styled, {css} from "styled-components/native";
+// import styled, {css} from "styled-components/native";
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation';
 import { CheckBox, Button, Text } from 'react-native-elements';
 
-const StyledLabel = styled(Text)`
-  text-align: center;
-  flex: 1;  
-`;
+// const StyledLabel = styled(Text)`
+//   text-align: center;
+//   flex: 1;  
+// `;
 /*
 const StyledCheckBox = styled(CheckBox)`
   text-align: center;
@@ -41,7 +41,7 @@ const StyledCheckBox = styled(CheckBox)`
 
 
 const Todo = ({ relay, todo, user }) => {
-  const [isEditing, setIsEditing] = useState(false);
+  //const [isEditing, setIsEditing] = useState(false);
   console.log("text", todo)
   console.log("text", todo.text)
   const removeTodo = () =>
@@ -52,7 +52,7 @@ const Todo = ({ relay, todo, user }) => {
     ChangeTodoStatusMutation.commit(relay.environment, complete, todo, user);
   };
 
-  return <View style={{flex: 1, flexDirection: 'row',
+  return (<View style={{flex: 1, flexDirection: 'row',
   justifyContent: 'center', alignItems: 'center'}}>
     <CheckBox
     // containerStyle={css`border: 1px solid #e6e6e6;`}
@@ -71,7 +71,7 @@ const Todo = ({ relay, todo, user }) => {
         }}
        >
        </Button>
-  </View>;
+  </View>);
   //return <Text key={todo.id}></Text>;
   /*const handleCompleteChange = (e: any) => {
     const complete = e.currentTarget.checked;

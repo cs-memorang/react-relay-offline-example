@@ -19,7 +19,7 @@ import {graphql, createFragmentContainer} from 'react-relay';
  import { Button } from 'react-native-elements';
 import { View,StyleSheet,Text } from 'react-native';
 
-import styled, {css} from "styled-components/native";
+// import styled, {css} from "styled-components/native";
 
 // const StyledContainer = styled.View`
 //   flexDirection: row;

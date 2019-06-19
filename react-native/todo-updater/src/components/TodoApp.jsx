@@ -20,7 +20,7 @@ import { StyleSheet, View } from 'react-native';
 //import {createFragmentContainer, graphql, useIsConnected, useNetInfo } from 'react-relay-offline';
 import {createFragmentContainer, graphql } from 'react-relay-offline';
 import TodoListFooter from './TodoListFooter';
-import styled from "styled-components/native";
+// import styled from "styled-components/native";
 import { Text, Input } from 'react-native-elements';
 
 // const StyledTodoApp = styled.View`
