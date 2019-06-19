@@ -8,7 +8,7 @@
     "start-reset": "react-native start --reset-cache",
     "run-android": "npm run cli -- run-android",
     "debug": "react-native log-android",
-    "relay:compile": "relay-compiler --src ./src --schema ./server/data/schema.graphql --language typescript",
+    "relay:compile": "relay-compiler --src ./src --schema ./server/data/schema.graphql",
     "test": "jest",
     "netinfo": "react-native --verbose link @react-native-community/netinfo",
     "getIP": "node getIP.js",

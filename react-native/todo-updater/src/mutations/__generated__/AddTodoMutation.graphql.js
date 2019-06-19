@@ -1,37 +1,45 @@
-/* tslint:disable */
+/**
+ * @flow
+ * @relayHash 37900d003b5ad41143d24b5e10932347
+ */
 
-import { ConcreteRequest } from "relay-runtime";
-export type AddTodoInput = {
-    readonly id: string;
-    readonly text: string;
-    readonly userId: string;
-    readonly clientMutationId?: string | null;
-};
-export type AddTodoMutationVariables = {
-    readonly input: AddTodoInput;
-};
-export type AddTodoMutationResponse = {
-    readonly addTodo: {
-        readonly todoEdge: {
-            readonly __typename: string;
-            readonly cursor: string;
-            readonly node: {
-                readonly complete: boolean;
-                readonly id: string;
-                readonly text: string;
-            } | null;
-        };
-        readonly user: {
-            readonly id: string;
-            readonly totalCount: number;
-        };
-    } | null;
-};
-export type AddTodoMutation = {
-    readonly response: AddTodoMutationResponse;
-    readonly variables: AddTodoMutationVariables;
-};
+/* eslint-disable */
 
+'use strict';
+
+/*::
+import type { ConcreteRequest } from 'relay-runtime';
+export type AddTodoInput = {|
+  id: string,
+  text: string,
+  userId: string,
+  clientMutationId?: ?string,
+|};
+export type AddTodoMutationVariables = {|
+  input: AddTodoInput
+|};
+export type AddTodoMutationResponse = {|
+  +addTodo: ?{|
+    +todoEdge: {|
+      +__typename: string,
+      +cursor: string,
+      +node: ?{|
+        +complete: boolean,
+        +id: string,
+        +text: string,
+      |},
+    |},
+    +user: {|
+      +id: string,
+      +totalCount: number,
+    |},
+  |}
+|};
+export type AddTodoMutation = {|
+  variables: AddTodoMutationVariables,
+  response: AddTodoMutationResponse,
+|};
+*/
 
 
 /*
@@ -56,7 +64,7 @@ mutation AddTodoMutation(
 }
 */
 
-const node: ConcreteRequest = (function(){
+const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
@@ -186,5 +194,6 @@ return {
   }
 };
 })();
-(node as any).hash = 'c1931cfe1fd48fc43dedf1779558f244';
-export default node;
+// prettier-ignore
+(node/*: any*/).hash = 'c1931cfe1fd48fc43dedf1779558f244';
+module.exports = node;

@@ -23,15 +23,15 @@ import TodoListFooter from './TodoListFooter';
 import styled from "styled-components/native";
 import { Text, Input } from 'react-native-elements';
 
-const StyledTodoApp = styled.View`
-  backgroundColor: #fff;
-  margin: 4px 0 4px 0;
-  position: relative;
-`;
+// const StyledTodoApp = styled.View`
+//   backgroundColor: #fff;
+//   margin: 4px 0 4px 0;
+//   position: relative;
+// `;
 
 
-const TodoApp = ({relay, user}: any) => {
-  const handleTextInputSave = (text: string) => {
+const TodoApp = ({relay, user}) => {
+  const handleTextInputSave = (text) => {
     AddTodoMutation.commit(relay.environment, text, user);
     return;
   };
@@ -43,8 +43,7 @@ const TodoApp = ({relay, user}: any) => {
   const hasTodos = user.totalCount > 0;
 
   return (
-    <View>
-      <StyledTodoApp>
+    <View style={styles.StyledTodoApp}>
         <View>
           <Text h3 style={styles.welcome}>Todos</Text>
           <Input placeholder='What needs to be done?'
@@ -53,27 +52,16 @@ const TodoApp = ({relay, user}: any) => {
         
         <TodoList user={user} />
         {hasTodos && <TodoListFooter user={user} />}
-        </StyledTodoApp>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#F5FCFF',
-    },
-    header: {
+    StyledTodoApp: {
+      //position: relative,
+      backgroundColor: '#fff', 
+      margin: '4px 0 4px 0',
 
-    },
-    welcome: {
-      textAlign: 'center',
-      margin: 10,
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
     },
   });
 

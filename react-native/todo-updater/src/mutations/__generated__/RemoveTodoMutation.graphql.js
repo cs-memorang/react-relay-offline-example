@@ -1,28 +1,36 @@
-/* tslint:disable */
+/**
+ * @flow
+ * @relayHash 33792f404f742bd7adbadb9ac42b7055
+ */
 
-import { ConcreteRequest } from "relay-runtime";
-export type RemoveTodoInput = {
-    readonly id: string;
-    readonly userId: string;
-    readonly clientMutationId?: string | null;
-};
-export type RemoveTodoMutationVariables = {
-    readonly input: RemoveTodoInput;
-};
-export type RemoveTodoMutationResponse = {
-    readonly removeTodo: {
-        readonly deletedTodoId: string;
-        readonly user: {
-            readonly completedCount: number;
-            readonly totalCount: number;
-        };
-    } | null;
-};
-export type RemoveTodoMutation = {
-    readonly response: RemoveTodoMutationResponse;
-    readonly variables: RemoveTodoMutationVariables;
-};
+/* eslint-disable */
 
+'use strict';
+
+/*::
+import type { ConcreteRequest } from 'relay-runtime';
+export type RemoveTodoInput = {|
+  id: string,
+  userId: string,
+  clientMutationId?: ?string,
+|};
+export type RemoveTodoMutationVariables = {|
+  input: RemoveTodoInput
+|};
+export type RemoveTodoMutationResponse = {|
+  +removeTodo: ?{|
+    +deletedTodoId: string,
+    +user: {|
+      +completedCount: number,
+      +totalCount: number,
+    |},
+  |}
+|};
+export type RemoveTodoMutation = {|
+  variables: RemoveTodoMutationVariables,
+  response: RemoveTodoMutationResponse,
+|};
+*/
 
 
 /*
@@ -40,7 +48,7 @@ mutation RemoveTodoMutation(
 }
 */
 
-const node: ConcreteRequest = (function(){
+const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
@@ -161,5 +169,6 @@ return {
   }
 };
 })();
-(node as any).hash = 'fd5052095c290ad9d2b30d377d3da474';
-export default node;
+// prettier-ignore
+(node/*: any*/).hash = 'fd5052095c290ad9d2b30d377d3da474';
+module.exports = node;

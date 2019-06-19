@@ -1,30 +1,44 @@
-/* tslint:disable */
+/**
+ * @flow
+ */
 
-import { ReaderFragment } from "relay-runtime";
+/* eslint-disable */
+
+'use strict';
+
+/*::
+import type { ReaderFragment } from 'relay-runtime';
 type Todo_todo$ref = any;
 type Todo_user$ref = any;
-export type TodoList_user$ref = any;
-export type TodoList_user = {
-    readonly todos: {
-        readonly edges: ReadonlyArray<{
-            readonly node: {
-                readonly id: string;
-                readonly complete: boolean;
-                readonly " $fragmentRefs": Todo_todo$ref;
-            } | null;
-        } | null> | null;
-    } | null;
-    readonly id: string;
-    readonly userId: string;
-    readonly totalCount: number;
-    readonly completedCount: number;
-    readonly " $fragmentRefs": Todo_user$ref;
-    readonly " $refType": TodoList_user$ref;
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type TodoList_user$ref: FragmentReference;
+declare export opaque type TodoList_user$fragmentType: TodoList_user$ref;
+export type TodoList_user = {|
+  +todos: ?{|
+    +edges: ?$ReadOnlyArray<?{|
+      +node: ?{|
+        +id: string,
+        +complete: boolean,
+        +$fragmentRefs: Todo_todo$ref,
+      |}
+    |}>
+  |},
+  +id: string,
+  +userId: string,
+  +totalCount: number,
+  +completedCount: number,
+  +$fragmentRefs: Todo_user$ref,
+  +$refType: TodoList_user$ref,
+|};
+export type TodoList_user$data = TodoList_user;
+export type TodoList_user$key = {
+  +$data?: TodoList_user$data,
+  +$fragmentRefs: TodoList_user$ref,
 };
+*/
 
 
-
-const node: ReaderFragment = (function(){
+const node/*: ReaderFragment*/ = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -178,5 +192,6 @@ return {
   ]
 };
 })();
-(node as any).hash = '95ead5b86d09249aafdad8de5f34e574';
-export default node;
+// prettier-ignore
+(node/*: any*/).hash = '95ead5b86d09249aafdad8de5f34e574';
+module.exports = node;

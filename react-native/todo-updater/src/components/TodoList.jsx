@@ -16,21 +16,21 @@ import Todo from './Todo';
 
 import React, {useState} from 'react';
 import {createPaginationContainer, graphql} from 'react-relay-offline';
-import { Text, ScrollView, RefreshControl, FlatList, Button } from "react-native";
+import { Text, ScrollView, RefreshControl, FlatList, Button, StyleSheet } from "react-native";
 
 import styled from "styled-components/native";
 
-const StyledMain = styled.View`
-  position: relative;
-  z-index: 2;
-  border: 1px solid #e6e6e6;
-`;
+// const StyledMain = styled.View`
+//   position: relative;
+//   z-index: 2;
+//   border: 1px solid #e6e6e6;
+// `;
 
 const TodoList = ({
   relay,
   user,
   user: {todos, totalCount, completedCount},
-}: any) => {
+}) => {
   /*const handleMarkAllChange = (e: any) => {
     const complete = e.currentTarget.checked;
 
@@ -50,13 +50,13 @@ const TodoList = ({
     todos && todos.edges
       ? todos.edges
           .filter(Boolean)
-          .map((edge: any) => edge.node)
+          .map((edge) => edge.node)
           .filter(Boolean)
       : [];
 
-  return <StyledMain>
-  <ScrollView refreshControl={<RefreshControl onRefresh={onRefresh} refreshing={refreshing} />}>
-  {nodes.map((node: any) => (
+  return (
+  <ScrollView refreshControl={<RefreshControl onRefresh={onRefresh} refreshing={refreshing} style={styles.StyledMain}/>}>
+  {nodes.map((node) => (
           <Todo key={node.id} todo={node} user={user} />
         ))}
    <Button 
@@ -66,9 +66,7 @@ const TodoList = ({
        relay.loadMore()
      }
    }} ></Button>    
-</ScrollView>
-</StyledMain>
-  
+</ScrollView>)
  /* (
    
         <Text key={item.node.id}>{item.node.hallName}</Text>
@@ -90,6 +88,17 @@ const TodoList = ({
     </section>
   );*/
 };
+
+const styles = StyleSheet.create({
+  StyledMain: {
+    // position: relative,
+    zIndex: 2,
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderColor: '#e6e6e6',
+
+  }
+})
 
 export default createPaginationContainer(TodoList, {
   user: graphql`

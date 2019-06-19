@@ -1,21 +1,35 @@
-/* tslint:disable */
+/**
+ * @flow
+ */
 
-import { ReaderFragment } from "relay-runtime";
+/* eslint-disable */
+
+'use strict';
+
+/*::
+import type { ReaderFragment } from 'relay-runtime';
 type TodoListFooter_user$ref = any;
 type TodoList_user$ref = any;
-export type TodoApp_user$ref = any;
-export type TodoApp_user = {
-    readonly id: string;
-    readonly userId: string;
-    readonly totalCount: number;
-    readonly completedCount: number;
-    readonly " $fragmentRefs": TodoListFooter_user$ref & TodoList_user$ref;
-    readonly " $refType": TodoApp_user$ref;
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type TodoApp_user$ref: FragmentReference;
+declare export opaque type TodoApp_user$fragmentType: TodoApp_user$ref;
+export type TodoApp_user = {|
+  +id: string,
+  +userId: string,
+  +totalCount: number,
+  +completedCount: number,
+  +$fragmentRefs: TodoListFooter_user$ref & TodoList_user$ref,
+  +$refType: TodoApp_user$ref,
+|};
+export type TodoApp_user$data = TodoApp_user;
+export type TodoApp_user$key = {
+  +$data?: TodoApp_user$data,
+  +$fragmentRefs: TodoApp_user$ref,
 };
+*/
 
 
-
-const node: ReaderFragment = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "TodoApp_user",
   "type": "User",
@@ -62,5 +76,6 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'ecccdb5a17f0428603f76e1bbaa8ea9d';
-export default node;
+// prettier-ignore
+(node/*: any*/).hash = 'ecccdb5a17f0428603f76e1bbaa8ea9d';
+module.exports = node;

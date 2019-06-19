@@ -17,27 +17,23 @@ query AppQuery($userId: String) {
 }
 `;
 
-const StyledBody = styled.View`
-  font-size: 14px;
-  font-family: 'Helvetica';
-  line-height: 1.8;
-  background: #f5f5f5;
-  color: #4d4d4d;
-  margin: 15px;
-  font-weight: 300;
-  `;
-/**
- * Interface Definitions
- */
-interface Props {}
+// const StyledBody = styled.View`
+//   font-size: 14px;
+//   font-family: 'Helvetica';
+//   line-height: 1.8;
+//   background: #f5f5f5;
+//   color: #4d4d4d;
+//   margin: 15px;
+//   font-weight: 300;
+//   `;
 
 /**
  * Component Definition
  */
-export default class extends Component<Props> {
+export default class extends Component {
   render() {
     return (
-      <StyledBody>
+      <View style={styles.StyledBody}>
       <QueryRenderer
         environment={environment}
         query={query}
@@ -46,7 +42,7 @@ export default class extends Component<Props> {
           userId: 'me',
         }}
         LoadingComponent={<Loading />}
-        render={({ props, error, retry, cached }: any) => {
+        render={({ props, error, retry, cached }) => {
 
           if (props && props.user) {
             return <TodoApp user={props.user} />;
@@ -71,7 +67,7 @@ export default class extends Component<Props> {
           )*/
         }}
       />
-      </StyledBody>
+      </View>
     )
   }
 }
@@ -93,4 +89,13 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  StyledBody: {
+    //fontSize: 14,
+    //fontFamily: 'Helvetica',
+    //lineHeight: 1.8,
+    backgroundColor: '#f5f5f5',
+    //color: '#4d4d4d',
+    margin: 15,
+    //fontWeight: 300,
+  }
 });

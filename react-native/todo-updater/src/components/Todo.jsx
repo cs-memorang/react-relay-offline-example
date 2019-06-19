@@ -18,21 +18,15 @@ import TodoTextInput from './TodoTextInput';
 */
 import React, { useState } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay-offline';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styled, {css} from "styled-components/native";
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation';
 import { CheckBox, Button, Text } from 'react-native-elements';
 
-const StyledLabel:any = styled(Text)`
+const StyledLabel = styled(Text)`
   text-align: center;
   flex: 1;  
-`;
-const StyledRemove = styled.TouchableOpacity`
-  color: #af5b5e;
-  background-color: white;
-  text-align: center;
-  height: 100%;
 `;
 /*
 const StyledCheckBox = styled(CheckBox)`
@@ -46,15 +40,15 @@ const StyledCheckBox = styled(CheckBox)`
 `;*/
 
 
-const Todo = ({ relay, todo, user }: any) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+const Todo = ({ relay, todo, user }) => {
+  const [isEditing, setIsEditing] = useState(false);
   console.log("text", todo)
   console.log("text", todo.text)
   const removeTodo = () =>
     RemoveTodoMutation.commit(relay.environment, todo, user);
   const handleDestroyClick = () => removeTodo();
 
-  const handleCompleteChange = (complete:boolean) => {
+  const handleCompleteChange = (complete) => {
     ChangeTodoStatusMutation.commit(relay.environment, complete, todo, user);
   };
 
@@ -67,7 +61,8 @@ const Todo = ({ relay, todo, user }: any) => {
           checked={todo.complete}
           onPress={() => handleCompleteChange(!todo.complete)}
         />
-    <StyledLabel h4 fontFamily='Helvetica' key={"todo"+ todo.id}>{todo.text}</StyledLabel>
+    {/* <StyledLabel h4 fontFamily='Helvetica' key={"todo"+ todo.id}>{todo.text}</StyledLabel> */}
+    <Text style={styles.StyledLabel} key={"todo"+ todo.id}>{todo.text}</Text>
     <Button
          onPress={handleDestroyClick}
          icon={{name: 'delete'}}
@@ -130,6 +125,14 @@ const Todo = ({ relay, todo, user }: any) => {
     </li>
   );*/
 };
+
+const styles = StyleSheet.create({
+  StyledLabel: {
+    textAlign: 'center',
+    flex: 1,
+    fontFamily: 'Helvetica',
+  }
+})
 
 export default createFragmentContainer(Todo, {
   todo: graphql`

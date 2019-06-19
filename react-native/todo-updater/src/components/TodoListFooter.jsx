@@ -16,35 +16,35 @@ import RemoveCompletedTodosMutation from '../mutations/RemoveCompletedTodosMutat
 import React from 'react';
 import {graphql, createFragmentContainer} from 'react-relay';
 
-import { Text, Button } from 'react-native-elements';
-import { View } from 'react-native';
+ import { Button } from 'react-native-elements';
+import { View,StyleSheet,Text } from 'react-native';
 
 import styled, {css} from "styled-components/native";
 
-const StyledContainer = styled.View`
-  flexDirection: row;
-  backgroundColor: #fff;
-  justifyContent: center;
-  alignItems: center;
-`;
+// const StyledContainer = styled.View`
+//   flexDirection: row;
+//   backgroundColor: #fff;
+//   justifyContent: center;
+//   alignItems: center;
+// `;
 
-const StyleButtonContainer = styled.View`
-  flex: 1;
-`;
+// const StyleButtonContainer = styled.View`
+//   flex: 1;
+// `;
 
-const StyledLabel = styled(Text)`
-  text-align: center;
-`;
+// const StyledLabel = styled(Text)`
+//   text-align: center;
+// `;
 
 const TodoListFooter = ({
   relay,
   user,
   user: {todos, completedCount, totalCount},
-}: any) => {
+}) => {
   const completedEdges =
     todos && todos.edges
       ? todos.edges.filter(
-          (edge: any) => edge && edge.node && edge.node.complete,
+          (edge) => edge && edge.node && edge.node.complete,
         )
       : [];
 
@@ -61,24 +61,49 @@ const TodoListFooter = ({
   const numRemainingTodos = totalCount - completedCount;
 
   return (
-    <StyledContainer>
-      <StyleButtonContainer>
-      <StyledLabel h4>
-      {numRemainingTodos + " Item" + (numRemainingTodos === 1 ? '' : 's') +" left"}
-        </StyledLabel>
-        </StyleButtonContainer>
+    <View style={styles.StyledContainer}>
+      <View style={styles.StyleButtonContainer}>
+        <Text style={styles.StyledText}>
+        {numRemainingTodos + " Item" + (numRemainingTodos === 1 ? '' : 's') +" left"}
+        </Text>
+       </View>
 
-        <StyleButtonContainer>
+        <View style={styles.StyleButtonContainer}>
         <Button
         onPress={handleRemoveCompletedTodosClick}
         title="Clear completed"
         disabled={completedCount == 0}
         accessibilityLabel="Clear completed"
       />
-      </StyleButtonContainer>
-    </StyledContainer>
+      </View>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  StyledTodoApp: {
+    //position: relative,
+    backgroundColor: '#fff', 
+    margin: '4px 0 4px 0',
+
+  },
+
+  StyledContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+
+  StyleButtonContainer: {
+    flex: 1,
+  },
+
+  StyledText: {
+    textAlign: 'center',
+  }
+});
 
 export default createFragmentContainer(TodoListFooter, {
   user: graphql`

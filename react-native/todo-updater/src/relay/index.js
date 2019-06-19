@@ -8,7 +8,7 @@ const RelayNetworkLogger = require('relay-runtime/lib/RelayNetworkLogger')
 /**
  * Define fetch query
  */
-const fetchQuery: FetchFunction = (operation, variables) => {
+const fetchQuery = (operation, variables) => {
   
   const localIP = "192.168.100.157";
   console.log("fetch", localIP, operation)
@@ -25,7 +25,7 @@ const fetchQuery: FetchFunction = (operation, variables) => {
     return response.json();
   });
 }
-function callbackOffline(type: string, payload: any, error: any) {
+function callbackOffline(type, payload, error) {
   console.log("callbackoffline", type)
   console.log("callbackoffline", payload)
   console.log("callbackoffline", error)

@@ -1,21 +1,29 @@
-/* tslint:disable */
+/**
+ * @flow
+ * @relayHash 631572c299af686b1f58a0105d6b67db
+ */
 
-import { ConcreteRequest } from "relay-runtime";
+/* eslint-disable */
+
+'use strict';
+
+/*::
+import type { ConcreteRequest } from 'relay-runtime';
 type TodoList_user$ref = any;
-export type TodoListQueryVariables = {
-    readonly userId?: string | null;
-    readonly cursor?: string | null;
-};
-export type TodoListQueryResponse = {
-    readonly user: {
-        readonly " $fragmentRefs": TodoList_user$ref;
-    } | null;
-};
-export type TodoListQuery = {
-    readonly response: TodoListQueryResponse;
-    readonly variables: TodoListQueryVariables;
-};
-
+export type TodoListQueryVariables = {|
+  userId?: ?string,
+  cursor?: ?string,
+|};
+export type TodoListQueryResponse = {|
+  +user: ?{|
+    +$fragmentRefs: TodoList_user$ref
+  |}
+|};
+export type TodoListQuery = {|
+  variables: TodoListQueryVariables,
+  response: TodoListQueryResponse,
+|};
+*/
 
 
 /*
@@ -66,7 +74,7 @@ fragment Todo_user on User {
 }
 */
 
-const node: ConcreteRequest = (function(){
+const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
@@ -285,5 +293,6 @@ return {
   }
 };
 })();
-(node as any).hash = '2497b408fb5c7e84bdef928fd2f281b4';
-export default node;
+// prettier-ignore
+(node/*: any*/).hash = '2497b408fb5c7e84bdef928fd2f281b4';
+module.exports = node;
