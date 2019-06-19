@@ -15,7 +15,7 @@
 import Todo from './Todo';
 
 import React, {useState} from 'react';
-import {createPaginationContainer, graphql} from 'react-relay-offline';
+import {createPaginationContainer, graphql} from 'react-relay';
 import { Text, ScrollView, RefreshControl, FlatList, Button, StyleSheet } from "react-native";
 
 // import styled from "styled-components/native";

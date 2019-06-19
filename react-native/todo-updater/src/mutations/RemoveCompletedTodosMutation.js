@@ -17,7 +17,7 @@ import {
     Disposable,
     Environment,
     //RecordSourceSelectorProxy,
-  } from 'react-relay-offline';
+  } from 'react-relay';
   
   import {ConnectionHandler} from 'relay-runtime';
   

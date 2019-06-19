@@ -17,7 +17,7 @@ import RenameTodoMutation from '../mutations/RenameTodoMutation';
 import TodoTextInput from './TodoTextInput';
 */
 import React, { useState } from 'react';
-import { createFragmentContainer, graphql } from 'react-relay-offline';
+import { createFragmentContainer, graphql } from 'react-relay';
 import { View, StyleSheet } from 'react-native';
 // import styled, {css} from "styled-components/native";
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation';

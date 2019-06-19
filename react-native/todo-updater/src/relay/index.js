@@ -1,8 +1,18 @@
-import { Store, Environment } from 'react-relay-offline';
+import { 
+  Store, 
+  Environment , 
+  RecordSource } from 'relay-runtime';
 
-import { Network, FetchFunction } from 'relay-runtime';
-export { QueryRenderer, graphql } from 'react-relay-offline';
+import { 
+  Network, 
+  FetchFunction } from 'relay-runtime';
+export { 
+  QueryRenderer,
+   graphql } from 'react-relay';
 const RelayNetworkLogger = require('relay-runtime/lib/RelayNetworkLogger')
+
+
+const store = new Store(new RecordSource())
 //import RelayNetworkLogger from 'relay-runtime/lib/RelayNetworkLogger'
 
 /**
@@ -12,7 +22,10 @@ const fetchQuery = (operation, variables) => {
   
   const localIP = "192.168.100.157";
   console.log("fetch", localIP, operation)
-  return fetch('http://'+localIP+':3000/graphql', {
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+  const fullUrl = `${proxyUrl}http://${localIP}:3000/graphql`
+  console.log(fullUrl)
+  return fetch(fullUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -39,11 +52,6 @@ const network = Network.create(RelayNetworkLogger.wrapFetch(fetchQuery, () => ''
 export default network;
 
 /**
- * Store
- */
-export const store = new Store();
-
-/**
  * Environment 
  */
-export const environment = new Environment({ network, store }, callbackOffline);
+export const environment = new Environment({ network, store });

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { graphql } from 'react-relay-offline';
+import { graphql } from 'react-relay';
 import { environment, QueryRenderer } from './relay';
 import { default as Loading } from './components/Loading';
 import TodoApp from './components/TodoApp';
